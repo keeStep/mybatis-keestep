@@ -1,3 +1,18 @@
+/.idea/
+**.iml
+**/target/
+
+# 忽略 Eclipse 相关
+.classpath
+.project
+.settings
+
+# 忽略 IDEA 相关
+.idea
+*.iml
+
+
+#官方忽略
 # Compiled class file
 *.class
 
