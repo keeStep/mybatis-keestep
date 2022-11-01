@@ -4,8 +4,15 @@ import org.kee.mybatis.binding.MapperRegistry;
 import org.kee.mybatis.datasource.druid.DruidDataSourceFactory;
 import org.kee.mybatis.datasource.pooled.PooledDataSourceFactory;
 import org.kee.mybatis.datasource.unpooled.UnpooledDataSourceFactory;
+import org.kee.mybatis.executor.Executor;
+import org.kee.mybatis.executor.SimpleExecutor;
+import org.kee.mybatis.executor.resultset.ResultSetHandler;
+import org.kee.mybatis.executor.statement.PreparedStatementHandler;
+import org.kee.mybatis.executor.statement.StatementHandler;
+import org.kee.mybatis.mapping.BoundSql;
 import org.kee.mybatis.mapping.Environment;
 import org.kee.mybatis.mapping.MappedStatement;
+import org.kee.mybatis.transaction.Transaction;
 import org.kee.mybatis.transaction.jdbc.JdbcTransactionFactory;
 import org.kee.mybatis.type.TypeAliasRegistry;
 
@@ -73,5 +80,29 @@ public class Configuration {
 
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+
+    /**
+     * 创建SQL执行器
+     */
+    public Executor newExecutor(Transaction transaction) {
+        return new SimpleExecutor(this, transaction);
+    }
+
+
+    /**
+     * 创建语句处理器
+     */
+    public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, ResultHandler resultHandler, BoundSql boundSql) {
+        return new PreparedStatementHandler(executor, mappedStatement, parameterObject, resultHandler, boundSql);
+    }
+
+    /**
+     * 创建结果处理器
+     */
+    public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, BoundSql boundSql) {
+        // TODO
+        return null;
     }
 }
