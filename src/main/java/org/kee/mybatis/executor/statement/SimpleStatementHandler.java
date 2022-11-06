@@ -20,8 +20,8 @@ import java.util.List;
 public class SimpleStatementHandler extends BaseStatementHandler {
 
 
-    public SimpleStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, ResultSetHandler resultSetHandler, BoundSql boundSql) {
-        super(executor, mappedStatement, parameterObject, resultSetHandler, boundSql);
+    public SimpleStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, ResultHandler resultHandler, BoundSql boundSql) {
+        super(executor, mappedStatement, parameterObject, resultHandler, boundSql);
     }
 
     @Override
@@ -39,6 +39,6 @@ public class SimpleStatementHandler extends BaseStatementHandler {
     public <E> List<E> query(Statement statement, ResultHandler resultHandler) throws SQLException {
         String sql = boundSql.getSql();
         statement.execute(sql);
-        return this.resultHandler.handleResultSets(statement);
+        return this.resultSetHandler.handleResultSets(statement);
     }
 }
