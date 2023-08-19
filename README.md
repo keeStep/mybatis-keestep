@@ -1,2 +1,2 @@
 # mybatis-keestep
-逐步学习 Mybatis
+逐步分拆 Mybatis - step by step
