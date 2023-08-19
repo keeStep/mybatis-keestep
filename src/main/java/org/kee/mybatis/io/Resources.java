@@ -7,6 +7,7 @@ import java.io.Reader;
 
 /**
  * @description 通过类加载器获得resource的辅助类
+ [和spring加载资源文件有异曲同工之妙]
  * @author kee
  * @date 2022/10/29
  */
