@@ -4,4 +4,5 @@
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/keeStep/keeStep.github.io)
 
 # mybatis-keestep
-逐步分拆 Mybatis - step by step
+Build Mybatis Step By Kee (逐步构建 Mybatis)
+
